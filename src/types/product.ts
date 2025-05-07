@@ -1,4 +1,3 @@
-
 export type ProductCategory = 'homme' | 'femme';
 
 export interface Product {
@@ -39,4 +38,11 @@ export interface Order {
   items: OrderItem[];
   status: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
   created_at?: string;
+}
+
+export interface CustomerInfo {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
 }
