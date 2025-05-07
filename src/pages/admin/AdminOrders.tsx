@@ -10,7 +10,7 @@ const AdminOrders = () => {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   
-  const { data: orders = [], isLoading } = useQuery({
+  const { data: orders = [], isLoading } = useQuery<Order[]>({
     queryKey: ['admin-orders'],
     queryFn: ordersApi.getAllOrders
   });

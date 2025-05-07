@@ -98,6 +98,20 @@ export const ordersApi = {
     }
     
     return data as Order[];
+  },
+
+  async getAllOrders(): Promise<Order[]> {
+    const { data, error } = await supabase
+      .from('orders')
+      .select('*')
+      .order('created_at', { ascending: false });
+    
+    if (error) {
+      console.error('Error fetching all orders:', error);
+      return [];
+    }
+    
+    return data as Order[];
   }
 };
 

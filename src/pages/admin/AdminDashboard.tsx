@@ -6,17 +6,18 @@ import { supabase } from '../../lib/supabase';
 import { useToast } from '@/hooks/use-toast';
 import { useQuery } from '@tanstack/react-query';
 import { productsApi, ordersApi } from '../../lib/supabase';
+import { Product, Order } from '../../types/product';
 
 const AdminDashboard = () => {
   const { toast } = useToast();
   const [adminEmail, setAdminEmail] = useState<string | null>(null);
   
-  const { data: products = [] } = useQuery({
+  const { data: products = [] } = useQuery<Product[]>({
     queryKey: ['admin-products'],
     queryFn: productsApi.getAll
   });
   
-  const { data: orders = [] } = useQuery({
+  const { data: orders = [] } = useQuery<Order[]>({
     queryKey: ['admin-orders'],
     queryFn: ordersApi.getAllOrders
   });
